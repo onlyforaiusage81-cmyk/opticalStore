@@ -1,0 +1,32 @@
+import {
+  Eye,
+  Gem,
+  ShieldCheck,
+  Truck,
+  Stethoscope,
+  ScanEye,
+  LayoutGrid,
+  Sparkles,
+  Monitor,
+  RefreshCcw,
+  Wrench,
+  CircleDot,
+  Home,
+  type LucideIcon,
+} from "lucide-react";
+
+export const iconMap: Record<string, LucideIcon> = {
+  Eye,
+  Gem,
+  ShieldCheck,
+  Truck,
+  Stethoscope,
+  ScanEye,
+  LayoutGrid,
+  Sparkles,
+  Monitor,
+  RefreshCcw,
+  Wrench,
+  CircleDot,
+  Home,
+};

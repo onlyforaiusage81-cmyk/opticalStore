@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #faf8f5;
+  color: #222222;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+html.dark body {
+  background-color: #15120e;
+  color: #f3efe8;
+}
+
+::selection {
+  background-color: #b88652;
+  color: #faf8f5;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(184, 134, 82, 0.35);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 134, 82, 0.6);
+}
+
+@layer utilities {
+  .container-px {
+    @apply px-6 sm:px-8 lg:px-14;
+  }
+  .section-py {
+    @apply py-20 lg:py-32;
+  }
+  .eyebrow {
+    @apply font-body text-xs tracking-wide3 uppercase text-accent font-medium;
+  }
+  .heading-display {
+    @apply font-display text-ink dark:text-ink-dark;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom cursor (desktop only, fine pointer) */
+.custom-cursor-active,
+.custom-cursor-active * {
+  cursor: none !important;
+}
+
+@media (max-width: 1023px), (pointer: coarse) {
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Glassmorphism helper */
+.glass-panel {
+  background: rgba(250, 248, 245, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+html.dark .glass-panel {
+  background: rgba(28, 24, 18, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Skeleton loading shimmer */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(34, 34, 34, 0.06);
+}
+html.dark .skeleton {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(184, 134, 82, 0.18),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes accordionDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordionUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 0) translateY(-20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+@keyframes dialogPopIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
